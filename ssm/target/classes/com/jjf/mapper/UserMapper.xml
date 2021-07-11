@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+1、接口的名字和Mapper映射文件名称必须保持一致（不包含扩展名），如 EmpMapper.java、EmpMapper.xml，都是EmpMapper
+2、Mapper映射文件的namespace必须是接口的全路径名，如 namespace="com.jiangjf.mapper.EmpMapper"
+3、sql语句的id必须是对应方法的名称，如 id="findAll"
+4、EmpMapper.xml映射文件，保证编译后和接口放在同一个目录下
+-->
+<mapper namespace="com.jjf.mapper.UserMapper">
+    <!--
+    User login(User user);
+    -->
+    <select id="login" resultType="user">
+        select uid,uname,password from user where uname=#{uname} and password=#{password}
+    </select>
+</mapper>

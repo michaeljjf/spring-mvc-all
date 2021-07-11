@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+    <!--Spring包扫描-->
+    <context:component-scan base-package="com.jjf"></context:component-scan>
+
+    <!--
+    处理器映射器和处理器适配器配置的两种方式：
+    1、通过bean方式
+    2、通过mvc:annotation-driven
+    -->
+    <!--&lt;!&ndash;处理器映射器配置&ndash;&gt;
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+    &lt;!&ndash;处理器适配器配置&ndash;&gt;
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>-->
+
+    <!--开启后，自动配置处理器映射器和处理器适配器-->
+    <mvc:annotation-driven/>
+
+    <!--
+    静态资源放行：
+    1、每个目录配置放行规则（比较麻烦，后期还有其他目录的话，还得再配置）
+    2、把静态资源集中在一个目录中，如static下的js、css、img（推荐）
+    -->
+    <!--<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+    <mvc:resources mapping="/img/**" location="/img/"></mvc:resources>-->
+    <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>
+
+    <!--
+    Controller返回映射到指定目录下的jsp页面
+    com/jjf/controller/MyController.java中测试用
+    -->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>-->
+
+</beans>
