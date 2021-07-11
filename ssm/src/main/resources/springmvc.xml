@@ -43,8 +43,8 @@
     1、每个目录配置放行规则（比较麻烦，后期还有其他目录的话，还得再配置）
     2、把静态资源集中在一个目录中，如static下的js、css、img（推荐）
     -->
-    <!--<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
-    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+    <!--<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
     <mvc:resources mapping="/img/**" location="/img/"></mvc:resources>-->
     <!--<mvc:resources mapping="/static/**" location="/static/"></mvc:resources>-->
 
@@ -54,5 +54,11 @@
     -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     </bean>
+    <!--
+    文件上传解析组件
+    id必须为multipartResolver
+    springmvc默认使用该id找该组件
+    -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
 </beans>
